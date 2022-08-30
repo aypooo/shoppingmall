@@ -32,6 +32,6 @@ const userSchema = mongoose.Schema({
 
 })
 
-const User = monggose.mode('User', userSchema)
+const User = mongoose.model('User', userSchema)
 
-module.export = {User}
+module.exports = { User }
