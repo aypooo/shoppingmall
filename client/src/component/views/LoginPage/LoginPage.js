@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../_features/user/userLoginSlice';
-function LoginPage() {
+import { useNavigate } from 'react-router-dom';
+function LoginPage(props) {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
@@ -17,8 +19,15 @@ function LoginPage() {
             email: Email,
             password: Password,
         }
-        console.log(typeof loginUser)
         dispatch(loginUser(body))
+            .then(response => {
+                if (response.payload.loginSuccess) {
+                    navigate('/')
+                } else {
+                    alert('Error˝')
+                }
+            })
+
     }
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100vh' }}>

@@ -6,15 +6,14 @@ export const loginUser = createAsyncThunk(
     'users/login',
     async (body) => {
         console.log(body)
-        const response = axios.post('/api/users/login', body)
+        const response = await axios.post('/api/users/login', body)
         console.log(response.data)
         return response.data
     }
 )
 const initialState = {
-    user: {},
     loading: false,
-    loginSuccess: [],
+    loginSuccess: false,
     error: ''
 }
 const userSlice = createSlice({
@@ -25,14 +24,18 @@ const userSlice = createSlice({
         builder.addCase(loginUser.pending, (state) => {
             state.loading = true;
             state.error = '';
+            console.log(state.loading)
         })
         builder.addCase(loginUser.fulfilled, (state, action) => {
             state.loading = false;
             state.loginSuccess = action.payload
+            console.log(state.loading)
+            console.log(state.loginSuccess)
         })
         builder.addCase(loginUser.rejected, (state, action) => {
             state.loading = false;
             state.error = String(action.payload)
+            console.log(state.error)
         })
     }
 })

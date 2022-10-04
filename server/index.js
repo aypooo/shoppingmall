@@ -6,9 +6,9 @@ const cookieParser = require('cookie-parser')
 const config = require('./config/key')
 const { auth } = require('./middleware/auth')
 const { User } = require('./models/User')
-const cors = require('cors');
+// const cors = require('cors');
 
-app.use(cors({ origin: ["http://localhost:3000", "http://localhost:3000/"] }))
+// app.use(cors({ origin: ["http://localhost:3000", "http://localhost:3000/"] }))
 // require('dotenv').config();
 
 //application/x-www-form-urlencoded
@@ -16,11 +16,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 //application/json
 app.use(bodyParser.json())
 app.use(cookieParser())
-app.use((req, res) => {
-    res.header("Access-Control-Allow-Origin", "*")
-})
+// app.use((req, res) => {
+//     res.header("Access-Control-Allow-Origin", "*")
+// })
 
-// const whitelist = ["http://localhost:3000", "http://localhost:3000/"]
 
 const mongoose = require('mongoose')
 mongoose.connect(config.mongoURI, {
@@ -50,7 +49,7 @@ app.post('/api/users/register', (req, res) => {
 })
 
 app.post("/api/users/login", (req, res) => {
-
+    console.log(req.body)
     //요청된 이메일을 데이터베이스에 있는지 찾는다. 
     User.findOne({ email: req.body.email }, (err, user) => {
         if (!user)
