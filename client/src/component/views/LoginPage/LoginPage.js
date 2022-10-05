@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../_features/user/userLoginSlice';
 import { useNavigate } from 'react-router-dom';
-function LoginPage(props) {
+function LoginPage() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [Email, setEmail] = useState("")

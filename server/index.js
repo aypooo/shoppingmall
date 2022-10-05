@@ -43,13 +43,13 @@ app.post('/api/users/register', (req, res) => {
     user.save((err, userInfo) => {
         if (err) return res.json({ success: false, err })
         return res.status(200).json({
-            succes: true
+            success: true
         })
     })
 })
 
 app.post("/api/users/login", (req, res) => {
-    console.log(req.body)
+
     //요청된 이메일을 데이터베이스에 있는지 찾는다. 
     User.findOne({ email: req.body.email }, (err, user) => {
         if (!user)
