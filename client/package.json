@@ -49,5 +49,6 @@
   },
   "devDependencies": {
     "@ant-design/icons": "^4.7.0"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }

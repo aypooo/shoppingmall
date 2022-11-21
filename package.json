@@ -1,0 +1,26 @@
+{
+  "name": "shoppingmall",
+  "version": "1.0.0",
+  "description": "readme",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "backend": "nodemon server/index.js",
+    "frontend": "npm run start --prefix client",
+    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aypooo/shoppingmall.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aypooo/shoppingmall/issues"
+  },
+  "homepage": "https://github.com/aypooo/shoppingmall#readme",
+  "dependencies": {
+    "concurrently": "^7.5.0"
+  }
+}
